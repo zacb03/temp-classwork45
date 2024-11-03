@@ -25,6 +25,29 @@ interface DepartmentsProps {
   onRoomsChange?: (rooms: { title: string }[]) => void;
 }
 
+// Add this before the Departments component
+const roomData: { [key: string]: { title: string }[] } = {
+  IT: [
+    { title: 'Computer Lab 1' },
+    { title: 'Server Room' },
+    { title: 'Tech Support' }
+  ],
+  Marketing: [
+    { title: 'Conference Room' },
+    { title: 'Creative Studio' }
+  ],
+  Library: [
+    { title: 'Main Reading Hall' },
+    { title: 'Study Room 1' },
+    { title: 'Study Room 2' }
+  ],
+  // Add default rooms for when department isn't found
+  default: [
+    { title: 'Room 101' },
+    { title: 'Room 102' }
+  ]
+};
+
 export default function Departments({ selectedDepartment, onDepartmentSelect, onRoomsChange }: DepartmentsProps) {
   const [showAllDepartments, setShowAllDepartments] = useState(false);
   const [departments, setDepartments] = useState([

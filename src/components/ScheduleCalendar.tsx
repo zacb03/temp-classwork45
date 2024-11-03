@@ -32,23 +32,27 @@ interface CalendarEvent {
 }
 
 interface ScheduleCalendarProps {
-  selectedRoom: string | null;
   events: CalendarEvent[];
+  viewType: 'day' | 'week';
   currentDate: Date;
   onDateChange: (date: Date) => void;
+  onViewToggle: () => void;
   onHome: () => void;
   onAddEvent: (date: Date, startTime?: string, duration?: number) => void;
   onViewEventDetails: (eventId: string) => void;
+  selectedRoom: string | null;
 }
 
 const ScheduleCalendar: React.FC<ScheduleCalendarProps> = ({
-  selectedRoom,
   events,
+  viewType,
   currentDate,
   onDateChange,
+  onViewToggle,
   onHome,
   onAddEvent,
-  onViewEventDetails
+  onViewEventDetails,
+  selectedRoom
 }) => {
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const hours = Array.from({ length: 18 }, (_, i) => i + 6); // Start from 6 AM, 18 hours total
